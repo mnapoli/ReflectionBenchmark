@@ -7,7 +7,7 @@ use Benchmark\Fixture\Foo;
 use Closure;
 use ReflectionProperty;
 
-class WriteManyPropertiesEvent extends AthleticEvent
+class WriteSinglePropertyEvent extends AthleticEvent
 {
     private $object;
     private $propertyName;
