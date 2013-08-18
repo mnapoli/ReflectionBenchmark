@@ -41,6 +41,17 @@ $set($object, $property, 'new value');
 ```
 
 
+## Running the benchmarks
+
+Install the dependencies using Composer:
+
+    $ composer install
+
+Run the benchmarks:
+
+	$ php vendor/bin/athletic -p benchmarks -b vendor/autoload.php
+
+
 ## Results
 
 - Read a single property:
@@ -104,3 +115,10 @@ Benchmark\WritePropertyEvent
     reflection: [10,000    ] [0.0000052271366] [191,309.32942]
     closure   : [10,000    ] [0.0000056527853] [176,903.94146]
 ```
+
+
+## Contribute
+
+Please provide fixes and improvements through pull requests.
+
+Don't forget to update the results in the README.
