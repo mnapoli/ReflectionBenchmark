@@ -22,12 +22,13 @@ class ReadManyPropertiesEvent extends AthleticEvent
         $this->object = new Foo('test');
         $this->propertyName = 'prop';
 
-        $this->reflectionProperty = new ReflectionProperty($this->object, $this->propertyName);
+        $this->reflectionProperty = new ReflectionProperty(get_class($this->object), $this->propertyName);
         $this->reflectionProperty->setAccessible(true);
 
-        $this->closure = function($prop) {
-            return $this->{$prop};
+        $this->closure = function($object, $prop) {
+            return $object->{$prop};
         };
+        $this->closure = Closure::bind($this->closure, null, get_class($this->object));
     }
 
     /**
@@ -59,7 +60,7 @@ class ReadManyPropertiesEvent extends AthleticEvent
      */
     public function closure()
     {
-        $closure = Closure::bind($this->closure, $this->object, $this->object);
-        $value = $closure($this->propertyName);
+        $closure = $this->closure;
+        $value = $closure($this->object, $this->propertyName);
     }
 }

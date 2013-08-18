@@ -22,7 +22,7 @@ class WriteManyPropertiesEvent extends AthleticEvent
         $this->object = new Foo('test');
         $this->propertyName = 'prop';
 
-        $this->reflectionProperty = new ReflectionProperty($this->object, $this->propertyName);
+        $this->reflectionProperty = new ReflectionProperty(get_class($this->object), $this->propertyName);
         $this->reflectionProperty->setAccessible(true);
 
         $this->closure = function($prop, $value) {
