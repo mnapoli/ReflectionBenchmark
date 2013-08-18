@@ -123,6 +123,10 @@ Please provide fixes and improvements through pull requests.
 
 Don't forget to update the results in the README.
 
+### TODO
+
+- Add Vagrant config for a standard test environment
+
 
 ## Credits
 
