@@ -29,7 +29,7 @@ class ReadPropertyEvent extends AthleticEvent
     {
         $reflectionProperty = new ReflectionProperty($this->object, $this->propertyName);
         $reflectionProperty->setAccessible(true);
-        $value = $reflectionProperty->getValue($this->object);
+        return $reflectionProperty->getValue($this->object);
     }
 
     /**
@@ -38,7 +38,14 @@ class ReadPropertyEvent extends AthleticEvent
     public function arrayCast()
     {
         $array = (array) $this->object;
-        $value = $array["\0" . get_class($this->object) . "\0" . $this->propertyName];
+        $protectedKey = "\0*\0" . $this->propertyName;
+        $privateKey = "\0" . get_class($this->object) . "\0" . $this->propertyName;
+        if (array_key_exists($protectedKey, $array)) {
+            return $array[$protectedKey];
+        } elseif (array_key_exists($privateKey, $array)) {
+            return $array[$privateKey];
+        }
+        throw new \Exception("property doesn't exist");
     }
 
     /**
@@ -47,6 +54,6 @@ class ReadPropertyEvent extends AthleticEvent
     public function closure()
     {
         $closure = Closure::bind($this->closure, $this->object, $this->object);
-        $value = $closure($this->propertyName);
+        return $closure($this->propertyName);
     }
 }
