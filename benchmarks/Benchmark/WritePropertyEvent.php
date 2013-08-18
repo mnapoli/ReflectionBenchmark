@@ -15,7 +15,6 @@ class WritePropertyEvent extends AthleticEvent
 {
     private $object;
     private $propertyName;
-    private $closure;
 
     public function setUp()
     {
@@ -42,7 +41,6 @@ class WritePropertyEvent extends AthleticEvent
             function ($object, $prop, $value) {
                 $object->$prop = $value;
             },
-            $this->closure,
             $this->object,
             $this->object
         )->__invoke($this->object, $this->propertyName, 'test2');
