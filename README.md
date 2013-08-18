@@ -45,12 +45,15 @@ $set($object, $property, 'new value');
 
 Install the dependencies using Composer:
 
-    $ composer install
+```sh
+$ composer install
+```
 
 Run the benchmarks:
 
-	$ php vendor/bin/athletic -p benchmarks -b vendor/autoload.php
-
+```sh
+$ php -n vendor/bin/athletic -p benchmarks -b vendor/autoload.php
+```
 
 ## Results
 
