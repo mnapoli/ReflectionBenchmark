@@ -43,6 +43,9 @@ class WriteManyPropertiesEvent extends AthleticEvent
      */
     public function closure()
     {
+        if (!class_exists('Closure')) {
+            throw new \Exception("works on PHP 5.4");
+        }
         $closure = Closure::bind($this->closure, $this->object, $this->object);
         $closure($this->propertyName, 'test2');
     }

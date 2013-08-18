@@ -36,7 +36,7 @@ class ReadManyPropertiesEvent extends AthleticEvent
      */
     public function reflection()
     {
-        $value = $this->reflectionProperty->getValue($this->object);
+        return $this->reflectionProperty->getValue($this->object);
     }
 
     /**
@@ -60,7 +60,10 @@ class ReadManyPropertiesEvent extends AthleticEvent
      */
     public function closure()
     {
+        if (!class_exists('Closure')) {
+            throw new \Exception("works on PHP 5.4");
+        }
         $closure = $this->closure;
-        $value = $closure($this->object, $this->propertyName);
+        return $closure($this->object, $this->propertyName);
     }
 }
