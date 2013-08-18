@@ -60,7 +60,7 @@ class ReadManyPropertiesEvent extends AthleticEvent
      */
     public function closure()
     {
-        if (!class_exists('Closure')) {
+        if (!method_exists('Closure', 'bindTo')) {
             throw new \Exception("works on PHP 5.4");
         }
         $closure = $this->closure;
