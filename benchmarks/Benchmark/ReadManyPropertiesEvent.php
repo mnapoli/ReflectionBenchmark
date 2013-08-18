@@ -5,11 +5,15 @@ namespace Benchmark;
 use Athletic\AthleticEvent;
 use Benchmark\Fixture\Foo;
 use Closure;
+use ReflectionProperty;
 
 class ReadManyPropertiesEvent extends AthleticEvent
 {
     private $object;
     private $propertyName;
+    /**
+     * @var ReflectionProperty
+     */
     private $reflectionProperty;
     private $closure;
 
@@ -18,7 +22,7 @@ class ReadManyPropertiesEvent extends AthleticEvent
         $this->object = new Foo('test');
         $this->propertyName = 'prop';
 
-        $this->reflectionProperty = new \ReflectionProperty($this->object, $this->propertyName);
+        $this->reflectionProperty = new ReflectionProperty($this->object, $this->propertyName);
         $this->reflectionProperty->setAccessible(true);
 
         $this->closure = function($prop) {

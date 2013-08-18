@@ -5,6 +5,7 @@ namespace Benchmark;
 use Athletic\AthleticEvent;
 use Benchmark\Fixture\Foo;
 use Closure;
+use ReflectionProperty;
 
 class WritePropertyEvent extends AthleticEvent
 {
@@ -26,7 +27,7 @@ class WritePropertyEvent extends AthleticEvent
      */
     public function reflection()
     {
-        $reflectionProperty = new \ReflectionProperty($this->object, $this->propertyName);
+        $reflectionProperty = new ReflectionProperty($this->object, $this->propertyName);
         $reflectionProperty->setAccessible(true);
         $reflectionProperty->setValue($this->object, 'test2');
     }
