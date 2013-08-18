@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "psr-0": {
+            "Benchmark": "benchmarks/"
+        }
+    },
+    "require-dev": {
+        "athletic/athletic": "~0.1"
+    }
+}
