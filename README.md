@@ -122,3 +122,8 @@ Benchmark\WritePropertyEvent
 Please provide fixes and improvements through pull requests.
 
 Don't forget to update the results in the README.
+
+
+## Credits
+
+This is merely a compilation of the methods Marco Pivetta exposed on [his blog](http://ocramius.github.io/).
