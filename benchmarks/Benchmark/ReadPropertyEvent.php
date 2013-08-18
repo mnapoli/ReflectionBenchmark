@@ -15,15 +15,11 @@ class ReadPropertyEvent extends AthleticEvent
 {
     private $object;
     private $propertyName;
-    private $closure;
 
     public function setUp()
     {
         $this->object       = new Foo('test');
         $this->propertyName = 'prop';
-        $this->closure      = function ($object, $prop) {
-            return $object->{$prop};
-        };
     }
 
     /**
@@ -63,8 +59,12 @@ class ReadPropertyEvent extends AthleticEvent
      */
     public function closure()
     {
-        $closure = Closure::bind($this->closure, null, $this->object);
-
-        return $closure($this->object, $this->propertyName);
+        return Closure::bind(
+            function ($object, $prop) {
+                return $object->{$prop};
+            },
+            null,
+            $this->object
+        )->__invoke($this->object, $this->propertyName);
     }
 }
