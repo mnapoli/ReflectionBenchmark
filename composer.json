@@ -4,7 +4,8 @@
             "Benchmark": "benchmarks/"
         }
     },
-    "require-dev": {
-        "athletic/athletic": "~0.1"
+    "require": {
+        "athletic/athletic": "~0.1",
+        "php":               "~5.4"
     }
 }

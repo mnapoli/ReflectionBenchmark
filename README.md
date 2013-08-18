@@ -45,12 +45,15 @@ $set($object, $property, 'new value');
 
 Install the dependencies using Composer:
 
-    $ composer install
+```sh
+$ composer install
+```
 
 Run the benchmarks:
 
-	$ php vendor/bin/athletic -p benchmarks -b vendor/autoload.php
-
+```sh
+$ php -n vendor/bin/athletic -p benchmarks -b vendor/autoload.php
+```
 
 ## Results
 
@@ -78,42 +81,42 @@ Reflection is way faster.
 ### Raw results
 
 ```
-Benchmark\ReadManyPropertiesEvent
-    Method Name   Iterations    Average Time      Ops/second
-    ----------  ------------  --------------    -------------
-    reflection: [10,000    ] [0.0000021422625] [466,796.21159]
-    arrayCast : [10,000    ] [0.0000049477577] [202,111.75575]
-    closure   : [10,000    ] [0.0000030014038] [333,177.42755]
-
-
 Benchmark\ReadPropertyEvent
     Method Name   Iterations    Average Time      Ops/second
     ----------  ------------  --------------    -------------
-    reflection: [10,000    ] [0.0000050424337] [198,316.93421]
-    arrayCast : [10,000    ] [0.0000043929338] [227,638.30168]
-    closure   : [10,000    ] [0.0000049844980] [200,622.00751]
+    reflection: [10,000    ] [0.0000019646883] [508,986.59062]
+    arrayCast : [10,000    ] [0.0000019546270] [511,606.55258]
+    closure   : [10,000    ] [0.0000017421722] [573,996.05868]
+
+
+Benchmark\ReadSinglePropertyEvent
+    Method Name   Iterations    Average Time      Ops/second
+    ----------  ------------  --------------    -------------
+    reflection: [10,000    ] [0.0000004869938] [2,053,414.27592]
+    arrayCast : [10,000    ] [0.0000011763334] [850,099.11024]
+    closure   : [10,000    ] [0.0000008200169] [1,219,487.11985]
 
 
 Benchmark\ReadWholeObjectEvent
     Method Name   Iterations    Average Time      Ops/second
     ----------  ------------  --------------    -------------
-    reflection: [10,000    ] [0.0000294789314] [33,922.53218]
-    arrayCast : [10,000    ] [0.0000150936604] [66,252.98148]
-    closure   : [10,000    ] [0.0000066485167] [150,409.49010]
-
-
-Benchmark\WriteManyPropertiesEvent
-    Method Name   Iterations    Average Time      Ops/second
-    ----------  ------------  --------------    -------------
-    reflection: [10,000    ] [0.0000018604040] [537,517.65324]
-    closure   : [10,000    ] [0.0000051559448] [193,950.87304]
+    reflection: [10,000    ] [0.0000115878582] [86,297.22445]
+    arrayCast : [10,000    ] [0.0000046281338] [216,069.81321]
+    closure   : [10,000    ] [0.0000032783508] [305,031.41727]
 
 
 Benchmark\WritePropertyEvent
     Method Name   Iterations    Average Time      Ops/second
     ----------  ------------  --------------    -------------
-    reflection: [10,000    ] [0.0000052271366] [191,309.32942]
-    closure   : [10,000    ] [0.0000056527853] [176,903.94146]
+    reflection: [10,000    ] [0.0000019083738] [524,006.34659]
+    closure   : [10,000    ] [0.0000020534754] [486,979.29849]
+
+
+Benchmark\WriteSinglePropertyEvent
+    Method Name   Iterations    Average Time      Ops/second
+    ----------  ------------  --------------    -------------
+    reflection: [10,000    ] [0.0000005626678] [1,777,247.45763]
+    closure   : [10,000    ] [0.0000009505272] [1,052,047.75760]
 ```
 
 
