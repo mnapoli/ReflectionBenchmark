@@ -57,23 +57,23 @@ $ php -n vendor/bin/athletic -p benchmarks -b vendor/autoload.php
 
 ## Results
 
-- Read a single property:
+- Read a single property on *one* object:
 
-Casting to an array is faster by not so much.
+The closure is faster.
 
-- Read the same property on many objects:
+- Read a single property on *many* objects:
 
-Reflection is faster than other methods.
+Reflection is way faster.
 
 - Reading all the properties of an object:
 
 The closure is way faster.
 
-- Writing a single property:
+- Writing a single property on *one* object:
 
 Reflection is slightly faster.
 
-- Writing the same property on many objects:
+- Writing a single property on *many* objects:
 
 Reflection is way faster.
 
