@@ -7,7 +7,7 @@ use Benchmark\Fixture\Foo;
 use Closure;
 use ReflectionProperty;
 
-class WriteManyPropertiesEvent extends AthleticEvent
+class WriteSinglePropertyEvent extends AthleticEvent
 {
     private $object;
     private $propertyName;
@@ -19,15 +19,19 @@ class WriteManyPropertiesEvent extends AthleticEvent
 
     public function setUp()
     {
-        $this->object = new Foo('test');
-        $this->propertyName = 'prop';
+        $this->object       = new Foo('test');
+        $this->propertyName = $prop = 'prop';
 
         $this->reflectionProperty = new ReflectionProperty(get_class($this->object), $this->propertyName);
         $this->reflectionProperty->setAccessible(true);
 
-        $this->closure = function($prop, $value) {
-            $this->{$prop} = $value;
-        };
+        $this->closure = Closure::bind(
+            function ($object, $value) use ($prop) {
+                $object->$prop = $value;
+            },
+            $this->object,
+            $this->object
+        );
     }
 
     /**
@@ -43,10 +47,6 @@ class WriteManyPropertiesEvent extends AthleticEvent
      */
     public function closure()
     {
-        if (!method_exists('Closure', 'bindTo')) {
-            throw new \Exception("works on PHP 5.4");
-        }
-        $closure = Closure::bind($this->closure, $this->object, $this->object);
-        $closure($this->propertyName, 'test2');
+        $this->closure->__invoke($this->object, 'test2');
     }
 }

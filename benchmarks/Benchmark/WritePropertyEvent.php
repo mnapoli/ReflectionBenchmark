@@ -7,19 +7,19 @@ use Benchmark\Fixture\Foo;
 use Closure;
 use ReflectionProperty;
 
+/**
+ * Verifies instantiation + execution time for usage of various reflection-ish techniques
+ * used to write properties
+ */
 class WritePropertyEvent extends AthleticEvent
 {
     private $object;
     private $propertyName;
-    private $closure;
 
     public function setUp()
     {
         $this->object = new Foo('test');
         $this->propertyName = 'prop';
-        $this->closure = function($prop, $value) {
-            $this->{$prop} = $value;
-        };
     }
 
     /**
@@ -37,10 +37,12 @@ class WritePropertyEvent extends AthleticEvent
      */
     public function closure()
     {
-        if (!method_exists('Closure', 'bindTo')) {
-            throw new \Exception("works on PHP 5.4");
-        }
-        $closure = Closure::bind($this->closure, $this->object, $this->object);
-        $closure($this->propertyName, 'test2');
+        Closure::bind(
+            function ($object, $prop, $value) {
+                $object->$prop = $value;
+            },
+            $this->object,
+            $this->object
+        )->__invoke($this->object, $this->propertyName, 'test2');
     }
 }
