@@ -2,6 +2,10 @@
 
 This is a benchmark of all methods allowing to access private properties (read and write).
 
+We all know that micro-optimization is most of the time useless. However, if you write libraries or frameworks
+making extensive use of reflection techniques, you probably wonder how to spare the impact of using reflection
+to your users. This comparison is here to help by maintaining an up-to-date and reproducible summary.
+
 
 ## Methods
 
@@ -56,6 +60,11 @@ $ php -n vendor/bin/athletic -p benchmarks -b vendor/autoload.php
 ```
 
 ## Results
+
+Those results were obtained on a development OS X machine using PHP 5.5.5. Feel free to run the benchmark
+on your server and update these results if you get different ones. Be aware that "slightly faster" means that
+it's probably not significant, whereas "faster" or "way faster" means that results are expected to be
+reproducible for the same PHP version.
 
 - Read a single property on *one* object:
 
