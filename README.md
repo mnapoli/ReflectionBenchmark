@@ -59,7 +59,7 @@ $ php -n vendor/bin/athletic -p benchmarks -b vendor/autoload.php
 
 - Read a single property on *one* object:
 
-The closure is faster.
+The closure is slightly faster.
 
 - Read a single property on *many* objects:
 
@@ -67,7 +67,7 @@ Reflection is way faster.
 
 - Reading all the properties of an object:
 
-The closure is way faster.
+The closure is faster.
 
 - Writing a single property on *one* object:
 
@@ -81,42 +81,42 @@ Reflection is way faster.
 ### Raw results
 
 ```
-Benchmark\ReadPropertyEvent
+Benchmark\ReadAllPropertiesOnOneObjectEvent
     Method Name   Iterations    Average Time      Ops/second
     ----------  ------------  --------------    -------------
-    reflection: [10,000    ] [0.0000019646883] [508,986.59062]
-    arrayCast : [10,000    ] [0.0000019546270] [511,606.55258]
-    closure   : [10,000    ] [0.0000017421722] [573,996.05868]
+    reflection: [10,000    ] [0.0000097395658] [102,673.98111]
+    arrayCast : [10,000    ] [0.0000049465656] [202,160.46348]
+    closure   : [10,000    ] [0.0000042748213] [233,927.90813]
 
 
-Benchmark\ReadSinglePropertyEvent
+Benchmark\ReadSinglePropertyOnManyObjectsEvent
     Method Name   Iterations    Average Time      Ops/second
     ----------  ------------  --------------    -------------
-    reflection: [10,000    ] [0.0000004869938] [2,053,414.27592]
-    arrayCast : [10,000    ] [0.0000011763334] [850,099.11024]
-    closure   : [10,000    ] [0.0000008200169] [1,219,487.11985]
+    reflection: [100,000   ] [0.0000005387926] [1,856,001.69922]
+    arrayCast : [100,000   ] [0.0000017712998] [564,557.15626]
+    closure   : [100,000   ] [0.0000009075737] [1,101,838.89204]
 
 
-Benchmark\ReadWholeObjectEvent
+Benchmark\ReadSinglePropertyOnOneObjectEvent
     Method Name   Iterations    Average Time      Ops/second
     ----------  ------------  --------------    -------------
-    reflection: [10,000    ] [0.0000115878582] [86,297.22445]
-    arrayCast : [10,000    ] [0.0000046281338] [216,069.81321]
-    closure   : [10,000    ] [0.0000032783508] [305,031.41727]
+    reflection: [100,000   ] [0.0000018299770] [546,454.94484]
+    arrayCast : [100,000   ] [0.0000022302055] [448,389.16589]
+    closure   : [100,000   ] [0.0000015761971] [634,438.40237]
 
 
-Benchmark\WritePropertyEvent
+Benchmark\WriteSinglePropertyOnManyObjectsEvent
     Method Name   Iterations    Average Time      Ops/second
     ----------  ------------  --------------    -------------
-    reflection: [10,000    ] [0.0000019083738] [524,006.34659]
-    closure   : [10,000    ] [0.0000020534754] [486,979.29849]
+    reflection: [50,000    ] [0.0000006345797] [1,575,846.28910]
+    closure   : [50,000    ] [0.0000011913967] [839,350.98097]
 
 
-Benchmark\WriteSinglePropertyEvent
+Benchmark\WriteSinglePropertyOnOneObjectEvent
     Method Name   Iterations    Average Time      Ops/second
     ----------  ------------  --------------    -------------
-    reflection: [10,000    ] [0.0000005626678] [1,777,247.45763]
-    closure   : [10,000    ] [0.0000009505272] [1,052,047.75760]
+    reflection: [50,000    ] [0.0000018200827] [549,425.59451]
+    closure   : [50,000    ] [0.0000019398355] [515,507.61652]
 ```
 
 
@@ -133,4 +133,4 @@ Don't forget to update the results in the README.
 
 ## Credits
 
-This is merely a compilation of the methods Marco Pivetta exposed on [his blog](http://ocramius.github.io/).
+This is a compilation of the methods Marco Pivetta exposed on [his blog](http://ocramius.github.io/).
