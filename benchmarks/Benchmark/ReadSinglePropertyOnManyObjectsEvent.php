@@ -11,7 +11,7 @@ use ReflectionProperty;
  * Verifies execution time for usage of various reflection-ish techniques
  * used to access properties
  */
-class ReadSinglePropertyEvent extends AthleticEvent
+class ReadSinglePropertyOnManyObjectsEvent extends AthleticEvent
 {
     private $object;
     private $propertyName;

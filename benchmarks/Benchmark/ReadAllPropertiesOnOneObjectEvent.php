@@ -12,7 +12,7 @@ use ReflectionProperty;
  * Verifies execution time for instantiation + usage of various reflection-ish techniques
  * used to access all the properties of a class
  */
-class ReadWholeObjectEvent extends AthleticEvent
+class ReadAllPropertiesOnOneObjectEvent extends AthleticEvent
 {
     private $object;
 

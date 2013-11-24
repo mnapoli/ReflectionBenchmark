@@ -11,7 +11,7 @@ use ReflectionProperty;
  * Verifies instantiation + execution time for usage of various reflection-ish techniques
  * used to write properties
  */
-class WritePropertyEvent extends AthleticEvent
+class WriteSinglePropertyOnOneObjectEvent extends AthleticEvent
 {
     private $object;
     private $propertyName;
