@@ -23,7 +23,7 @@ class WriteSinglePropertyOnOneObjectEvent extends AthleticEvent
     }
 
     /**
-     * @iterations 10000
+     * @iterations 50000
      */
     public function reflection()
     {
@@ -33,7 +33,7 @@ class WriteSinglePropertyOnOneObjectEvent extends AthleticEvent
     }
 
     /**
-     * @iterations 10000
+     * @iterations 50000
      */
     public function closure()
     {

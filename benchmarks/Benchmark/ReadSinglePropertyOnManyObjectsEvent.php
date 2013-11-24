@@ -43,7 +43,7 @@ class ReadSinglePropertyOnManyObjectsEvent extends AthleticEvent
     }
 
     /**
-     * @iterations 10000
+     * @iterations 100000
      * @baseLine
      */
     public function reflection()
@@ -52,7 +52,7 @@ class ReadSinglePropertyOnManyObjectsEvent extends AthleticEvent
     }
 
     /**
-     * @iterations 10000
+     * @iterations 100000
      */
     public function arrayCast()
     {
@@ -68,7 +68,7 @@ class ReadSinglePropertyOnManyObjectsEvent extends AthleticEvent
     }
 
     /**
-     * @iterations 10000
+     * @iterations 100000
      */
     public function closure()
     {
