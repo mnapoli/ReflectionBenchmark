@@ -24,9 +24,9 @@ $protectedKey = "\0*\0" . $this->propertyName;
 $privateKey = "\0" . get_class($this->object) . "\0" . $this->propertyName;
 
 if (array_key_exists($protectedKey, $array)) {
-	$value = $array[$protectedKey];
+    $value = $array[$protectedKey];
 } elseif (array_key_exists($privateKey, $array)) {
-	$value = $array[$privateKey];
+    $value = $array[$privateKey];
 }
 ```
 
